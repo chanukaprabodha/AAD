@@ -121,25 +121,25 @@
         <!-- Form -->
         <form class="row g-3 w-50 mx-auto" id="stockForm">
             <div class="col-md-6">
-                <label for="itemCode" class="form-label">Item Code</label>
-                <input type="text" class="form-control" id="itemCode"/>
+                <label for="code" class="form-label">Item Code</label>
+                <input type="text" class="form-control" id="code"/>
                 <h6
                         class="invalidCode text-danger fw-400 position-absolute"
                 ></h6>
             </div>
             <div class="col-md-6">
-                <label for="itemName" class="form-label">Item Name</label>
-                <input type="text" class="form-control" id="itemName"/>
+                <label for="description" class="form-label">Item Name</label>
+                <input type="text" class="form-control" id="description"/>
                 <h6
                         class="invalidName text-danger fw-400 position-absolute"
                 ></h6>
             </div>
             <div class="col-12">
-                <label for="itemPrice" class="form-label">Price</label>
+                <label for="price" class="form-label">Price</label>
                 <input
                         type="currency"
                         class="form-control"
-                        id="itemPrice"
+                        id="price"
                         placeholder="$"
                 />
                 <h6
@@ -147,8 +147,8 @@
                 ></h6>
             </div>
             <div class="col-12">
-                <label for="itemQty" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="itemQty"/>
+                <label for="qty" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="qty"/>
                 <h6
                         class="invalidQty text-danger fw-400 position-absolute"
                 ></h6>
@@ -415,10 +415,10 @@
         const price = $(this).find('td:nth-child(3)').text();
         const qty = $(this).find('td:nth-child(4)').text();
 
-        $('#itemCode').val(code);
-        $('#itemName').val(name);
-        $('#itemPrice').val(price);
-        $('#itemQty').val(qty);
+        $('#code').val(code);
+        $('#description').val(name);
+        $('#price').val(price);
+        $('#qty').val(qty);
     });
 
     //get all items
@@ -426,23 +426,25 @@
         $.ajax({
             url: "http://localhost:8080/Application1_Web_exploded/item",
             type: 'GET',
-            success: (res) => {
-                $('#item_tbody').empty();
-                res.forEach((item) => {
-                    $('#item_tbody').append(`
+                success: (res) => {
+                    $('#item_tbody').empty();
+                    res.forEach((item) => {
+                        $('#item_tbody').append(`
                         <tr>
                             <td>${item.code}</td>
-                            <td>${item.name}</td>
+                            <td>${item.description}</td>
                             <td>${item.price}</td>
                             <td>${item.qty}</td>
                         </tr>`)
-                })
-            },
-            error: (error) => {
-                console.log(error)
-            }
+                    })
+                },
+                error: (error) => {
+                    console.log(error)
+                }
         })
     }
+
+    fetchItemData()
 </script>
 </body>
 </html>

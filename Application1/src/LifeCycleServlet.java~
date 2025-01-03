@@ -1,0 +1,12 @@
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+
+/**
+ * Author: Chanuka Prabodha
+ * Date: 2025-01-02
+ * Time: 02:25 PM
+ * Description:
+ */
+@WebServlet(urlPatterns = "/lifecycle")
+public class LifeCycleServlet extends HttpServlet {
+}
