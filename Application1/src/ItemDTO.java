@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 public class ItemDTO {
     private String code;
-    private String name;
+    private String description;
     private double price;
     private double qty;
 }
